@@ -27,10 +27,10 @@
       <arg name="launch_driver" value="$(var launch_driver)"/>
     </include>
 
-    <!-- Vehicle Velocity Converter  -->
-    <include file="$(find-pkg-share vehicle_velocity_converter)/launch/vehicle_velocity_converter.launch.xml">
+    <!-- Vehicle Velocity Converter (convert velocity report to twist with covariance stamped for gyro odometer)  -->
+    <!-- <include file="$(find-pkg-share vehicle_velocity_converter)/launch/vehicle_velocity_converter.launch.xml">
       <arg name="input_vehicle_velocity_topic" value="/vehicle/status/velocity_status"/>
       <arg name="output_twist_with_covariance" value="/sensing/vehicle_velocity_converter/twist_with_covariance"/>
-    </include>
+    </include> -->
   </group>
 </launch>
