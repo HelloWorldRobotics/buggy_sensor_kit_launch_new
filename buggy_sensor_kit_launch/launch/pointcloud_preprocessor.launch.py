@@ -32,18 +32,22 @@ def launch_setup(context, *args, **kwargs):
         name="concatenate_data",
         remappings=[
             ("~/input/twist", "/sensing/vehicle_velocity_converter/twist_with_covariance"),
-            ("output", "concatenated/pointcloud"),
+            ("output", "lidar/concatenated/pointcloud"),
         ],
         parameters=[
             {
                 "input_topics": [
-                    "/sensing/lidar/top/pointcloud_before_sync",
-                    "/sensing/lidar/left/pointcloud_before_sync",
-                    "/sensing/lidar/right/pointcloud_before_sync",
+                    # "/sensing/lidar/top/pointcloud_before_sync",
+                    # "/sensing/lidar/left/pointcloud_before_sync",
+                    # "/sensing/lidar/right/pointcloud_before_sync",
+                    "/sensing/lidar/top/pointcloud",
+                    "/sensing/lidar/left/pointcloud",
+                    "/sensing/lidar/right/pointcloud",
                 ],
                 "output_frame": LaunchConfiguration("base_frame"),
                 "input_twist_topic_type": "twist",
-                "publish_synchronized_pointcloud": True,
+                "timeout_sec": 0.01
+                # "publish_synchronized_pointcloud": True,
             }
         ],
         extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],
